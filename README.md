@@ -1,4 +1,4 @@
-<h1 align="center">Checkpoint 4 - Web Development</h1>
+<h1 align="center">Global Solution - Web Development & Front-End</h1>
 
 <hr/>
 
@@ -13,15 +13,14 @@
 <hr/>
 
 ## :pushpin: Introdução
-Este checkpoint teve como objetivo avaliar a compreensão acerca do [ReactJS](https://pt-br.legacy.reactjs.org/)
+Nosso projeto visa fornecer aos usuários dados precisos sobre as emissões de CO2 de embarcações específicas. Utilizando a API SeaRoutes, podemos acessar informações em tempo real sobre cada navio, permitindo aos usuários monitorar e entender melhor o impacto ambiental das atividades marítimas.
 
 ## :hammer_and_wrench: Tecnologias e Ferramentas
 Este projeto utilizou as seguintes tecnologias e ferramentas:
 * [ReactJS](https://pt-br.legacy.reactjs.org/)
 
 ## :technologist: Integrantes
-* RM 552980 - Danilo Vieira
 * RM 553377 - Enzo de Oliveira Rodrigues
 * RM 552939 - Jonata Rafael
 * RM 553403 - Matheus Felippe
-* RM 553521 - Rafael Cristofali
+
