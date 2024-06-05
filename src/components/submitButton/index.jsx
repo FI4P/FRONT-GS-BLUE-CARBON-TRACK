@@ -9,17 +9,16 @@ const SubmitButton = (
         background,
         onHandleButton = () => {
             return console.log("FODASE")
-        }
-
+        },
     }
 ) => {
-    return(
+    return (
         <>
-        
-            <button onClick={onHandleButton} style={{width : btnWidth , backgroundColor: background}}>
+          
+            <button onClick={onHandleButton} style={{ width: btnWidth, backgroundColor: background }}>
                 {text}
             </button>
-        
+
         </>
     )
 }

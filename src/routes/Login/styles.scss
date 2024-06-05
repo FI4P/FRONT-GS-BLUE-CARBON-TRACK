@@ -27,6 +27,23 @@ div.login-infos{
         display: flex;
         flex-direction: column;
         gap: 1rem;
+
+        p{
+            font-size: 1.6rem;
+            text-align: center;
+            color: $colors-text-primary;
+            font-weight: bold;
+            
+            button{
+                border: none;
+                 background: none;
+                 font-size: 1.6rem;
+                 font-weight: bold;
+                 padding: 0;
+                 margin: 0;
+                 color: $colors-1-light;
+            }
+        }
     }
 }
 

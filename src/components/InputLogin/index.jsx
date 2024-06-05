@@ -1,15 +1,16 @@
 import './styles.scss';
 
 function InputLogin({
-  props,
   inputType,
   placeholder,
   inputId,
   inputWidth,
-  handleInput = () => {
+  handleLogin = () => {
     return
-  }
-  
+  },
+  handleSingIn = () => {
+    return
+  },
   }) {
   return (
     <div className='input-login' style={{ width: inputWidth}}>
@@ -21,7 +22,7 @@ function InputLogin({
           id={inputId}
           name={inputId}
           style={{width : inputWidth}}
-          onChange={handleInput}
+          onChange={handleLogin}
         />
         <legend>
           <span>{placeholder}</span>
