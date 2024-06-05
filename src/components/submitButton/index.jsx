@@ -8,7 +8,7 @@ const SubmitButton = (
         text,
         background,
         onClick = () => {
-            return console.log("FODASE")
+            return
         },
     }
 ) => {

@@ -32,7 +32,7 @@ const Login = ({ hasAccount }) => {
 
     }
 
-    useEffect(()=> {
+    useEffect(() => {
 
     }, [handleLoginInfos])
 
@@ -40,11 +40,12 @@ const Login = ({ hasAccount }) => {
     const handleRegister = async (nodePath, userData) => {
         try {
             const res = await insertNewUser(nodePath, userData)
-
-            if (res == "success") console.log("Usuário registrado com sucesso")
-        } catch(error){
-            console.log("Não foi possivel inserir o usuário")
-        }  
+            if(res == "success") {
+                setLoginInfo({login : '', password: ''})
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const handleNewUser = () => {
@@ -55,10 +56,10 @@ const Login = ({ hasAccount }) => {
             login: loginInfo.login,
             password: loginInfo.password
         }
-        
+
         handleRegister(nodePath, userData)
 
-        
+
     }
 
     return (
@@ -82,8 +83,9 @@ const Login = ({ hasAccount }) => {
                         inputWidth="100%"
                         handleLogin={(e) => {
                             handleLoginInfos(e, "login")
-                            console.log(loginInfo)
                         }}
+                        value={loginInfo.login}
+
 
                     />
 
@@ -95,7 +97,7 @@ const Login = ({ hasAccount }) => {
                         handleLogin={(e) => {
                             handleLoginInfos(e, "password")
                         }}
-
+                        value={loginInfo.password}
                     />
 
                     {!signUp ? (
@@ -105,7 +107,7 @@ const Login = ({ hasAccount }) => {
                                 btnWidth="100%"
                                 background="#2F92FF"
                                 text="Cadastre-se"
-                                onClick={() => {handleNewUser()}}
+                                onClick={() => { handleNewUser() }}
 
                             />
 

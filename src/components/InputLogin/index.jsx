@@ -5,6 +5,7 @@ function InputLogin({
   placeholder,
   inputId,
   inputWidth,
+  value,
   handleLogin = () => {
     return
   },
@@ -23,6 +24,7 @@ function InputLogin({
           name={inputId}
           style={{width : inputWidth}}
           onChange={handleLogin}
+          value={value}
         />
         <legend>
           <span>{placeholder}</span>
