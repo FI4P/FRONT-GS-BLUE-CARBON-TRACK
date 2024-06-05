@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+button{
+    padding: 0.8rem 1.6rem;
+    border: none;
+    border-radius: 0.8rem;
+    font-size: 2rem;
+    font-weight: 500;
+    color: $colors-text-on-color;
+    cursor: pointer;
+    transition: filter $transition-time ease-in;
+
+    &:hover {
+    filter: brightness(0.75);
+}
+}
