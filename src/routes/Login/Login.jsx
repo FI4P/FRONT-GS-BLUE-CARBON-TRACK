@@ -3,41 +3,63 @@ import './styles.scss'
 import InputLogin from "../../components/InputLogin"
 import enviroment from "../../assets/svg/enviroment.svg"
 import SubmitButton from "../../components/submitButton"
+import { insertNewUser } from '../../models/User'
+import { generateId } from '../../hooks/helper'
 
 
 
 const Login = ({ hasAccount }) => {
 
     const [signUp, setSingUp] = useState(hasAccount)
-    const [loginInfo, setLoginInfo] = useState({login: '', password: ''})
+    const [loginInfo, setLoginInfo] = useState({ login: '', password: '' })
+    const [userData, setUserData] = useState({})
 
     const handleChangeStatus = () => {
-        if(!signUp){
+        if (!signUp) {
             setSingUp(true)
-        }else{
+        } else {
             setSingUp(false)
         }
     }
 
-    const handleLoginInfos  = (e, type) => {
-        
-        if(type == "login"){
-            const login = e.target.value
-            setLoginInfo({...loginInfo, login})
+    const handleLoginInfos = (e, type) => {
+
+        const value = e.target.value;
+        setLoginInfo(prevState => ({
+            ...prevState,
+            [type]: value
+        }));
+
+    }
+
+    useEffect(()=> {
+
+    }, [handleLoginInfos])
+
+
+    const handleRegister = async (nodePath, userData) => {
+        try {
+            const res = await insertNewUser(nodePath, userData)
+
+            if (res == "success") console.log("Usuário registrado com sucesso")
+        } catch(error){
+            console.log("Não foi possivel inserir o usuário")
+        }  
+    }
+
+    const handleNewUser = () => {
+        const userId = generateId()
+        const nodePath = `usuarios/${userId}`
+        const userData = {
+            id: userId,
+            login: loginInfo.login,
+            password: loginInfo.password
         }
-
-        if(type == "psw"){
-            const password = e.target.value
-            setLoginInfo({...loginInfo, password})
-        }
         
-    } 
+        handleRegister(nodePath, userData)
 
-    console.log(loginInfo)
-
-    
-
-
+        
+    }
 
     return (
         <div id='login-page'>
@@ -60,6 +82,7 @@ const Login = ({ hasAccount }) => {
                         inputWidth="100%"
                         handleLogin={(e) => {
                             handleLoginInfos(e, "login")
+                            console.log(loginInfo)
                         }}
 
                     />
@@ -70,7 +93,7 @@ const Login = ({ hasAccount }) => {
                         inputId="password"
                         inputWidth="100%"
                         handleLogin={(e) => {
-                            handleLoginInfos(e, "psw")
+                            handleLoginInfos(e, "password")
                         }}
 
                     />
@@ -82,6 +105,7 @@ const Login = ({ hasAccount }) => {
                                 btnWidth="100%"
                                 background="#2F92FF"
                                 text="Cadastre-se"
+                                onClick={() => {handleNewUser()}}
 
                             />
 

@@ -7,7 +7,7 @@ const SubmitButton = (
         btnWidth,
         text,
         background,
-        onHandleButton = () => {
+        onClick = () => {
             return console.log("FODASE")
         },
     }
@@ -15,7 +15,7 @@ const SubmitButton = (
     return (
         <>
           
-            <button onClick={onHandleButton} style={{ width: btnWidth, backgroundColor: background }}>
+            <button onClick={onClick} style={{ width: btnWidth, backgroundColor: background }}>
                 {text}
             </button>
 
