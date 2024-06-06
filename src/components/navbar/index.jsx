@@ -12,32 +12,25 @@ const NavBar = () => {
     <>
 
       <nav>
-        <ul className='nav-bar'>
-          <Link style={{textDecoration: "none"}} to="/home">
+        <div className="company">
+          <GiBigWave></GiBigWave>
+          <span>Blue Carbon Track</span>
+        </div>
 
-            <li><GiBigWave className='icon'></GiBigWave></li>
-
-          </Link>
-
-          <Link style={{textDecoration: "none"}} to="/home">
+        <ul>
+          <Link className='link'>
             <li>Home</li>
-
           </Link>
-
-          <Link style={{textDecoration: "none"}} to="/vessels">
-            <li>Embarcações disponiveís para análise</li>
+          <Link className='link'>
+            <li>Embaracções</li>
           </Link>
-
-          <Link style={{textDecoration: "none"}} to="/report">
-            <li>Análise geral de emissão das Embarcações</li>
+          <Link className='link'>
+            <li>Relatorio de emissões</li>
           </Link>
-
-
+          <Link className='link'>
+            <button className='signOut'>Sign out</button>
+          </Link>
         </ul>
-
-        <Link  style={{textDecoration : "none"}} to="/login">
-          <span>Sair</span>
-        </Link>
       </nav>
 
     </>
