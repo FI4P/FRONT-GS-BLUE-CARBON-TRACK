@@ -5,18 +5,17 @@ import "./index.scss"
 
 
 function App() {
-  const navigate = useNavigate()
-  useEffect(()=> {
-    isUserLogged().then(userLogged => {
-      !userLogged ?  navigate("/home") :navigate("/login")
-    })
-  }, [])  
+  // const navigate = useNavigate()
+  // useEffect(()=> {
+  //   isUserLogged().then(userLogged => {
+  //     !userLogged ?  navigate("/home") :navigate("/login")
+  //   })
+  // }, [])  
   return (
     <>
 
       <Outlet/>
-    
-    
+  
     </>
   )
 }
