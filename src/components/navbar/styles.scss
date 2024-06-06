@@ -1,0 +1,68 @@
+@import '../../styles/variables.scss';
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 6rem;
+    font-size: 1.8rem;
+
+    background-color: #63cce465;
+
+    ul.nav-bar {
+        display: flex;
+        align-items: center;
+        gap: 6rem;
+        list-style: none;
+
+       li{
+        color: $colors-text-primary;
+        font-weight: bold;
+        transition: all ease-in 0.3s;
+        cursor: pointer;
+        position: relative;
+       }
+
+       li:hover{
+        color: #000303;
+                    // Azul médio e brilhante, representando o oceano em um dia ensolarado.;
+       }
+
+       li::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px; /* ajuste a espessura da linha conforme necessário */
+        background-color: #000303; /* ajuste a cor da linha conforme necessário */
+        position: absolute;
+        bottom: -4px; /* ajuste a distância da linha abaixo do texto */
+        left: 0;
+        transition: width 0.3s ease-in;
+    }
+
+    li:hover::after {
+        width: 100%; /* a linha se estende em todo o comprimento do texto no hover */
+    }
+
+    
+    
+
+    }
+
+    span{
+        color: $colors-text-primary;
+        font-weight: bold;
+        transition: all ease-in 0.3s;
+
+    }
+    span:hover{
+        color:#000303 ;
+        cursor: pointer;
+    }
+
+
+    .icon {
+        font-size: 4rem;
+        color: $colors-text-primary;
+    }
+}

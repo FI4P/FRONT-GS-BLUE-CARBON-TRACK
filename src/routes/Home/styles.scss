@@ -1,0 +1,20 @@
+section.home{
+
+    background-image: linear-gradient(to bottom, #206B84, #163D4E, #0B1E28);
+    min-height: 100vh;
+
+    div.resume{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100%;
+        padding: 10rem;
+
+        h1{
+            font-size: 4rem;
+            color: #FFF ;
+        }
+    }
+   
+    
+}

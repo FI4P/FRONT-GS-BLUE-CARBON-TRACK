@@ -1,13 +1,19 @@
-import {} from "react"
+import { } from "react"
 import NavBar from "../../components/navbar"
+import "./styles.scss"
 
 
-const Home = () =>{
-    
+const Home = () => {
+
     return (
         <>
-            <h1>HOME PAGE</h1>
-            <NavBar></NavBar>
+            <section className="home">
+                <NavBar></NavBar>
+
+                <div className="resume">
+                    <h1>Blue Carbon Track</h1>
+                </div>
+            </section>
         </>
     )
 
