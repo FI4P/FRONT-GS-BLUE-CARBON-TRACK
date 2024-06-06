@@ -4,6 +4,15 @@ const generateId = () => {
 }
 
 
+const formatResponse = (responseObject) => {
+    const response = Object.keys(responseObject).map(key => ({
+        ...responseObject[key]
+    }))
+
+    return response
+}
+
 export {
-    generateId
+    generateId,
+    formatResponse
 }

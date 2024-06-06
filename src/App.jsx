@@ -9,7 +9,7 @@ import NavBar from "./components/navbar"
 function App() {
   const navigate = useNavigate()
   const [loginState, setLoginState] = useState(false);
-  useEffect(() => {
+/*   useEffect(() => {
     isUserLogged().then(userLogged => {
       if (!userLogged) {
         console.log(userLogged)
@@ -19,7 +19,7 @@ function App() {
         navigate("/login")
       }
     })
-  }, [])
+  }, []) */
   return (
     <>
       <Outlet />
