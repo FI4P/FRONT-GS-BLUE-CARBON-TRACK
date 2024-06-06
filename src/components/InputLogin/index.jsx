@@ -12,6 +12,7 @@ function InputLogin({
   handleSingIn = () => {
     return
   },
+  autocomplete="off"
   }) {
   return (
     <div className='input-login' style={{ width: inputWidth}}>
@@ -25,6 +26,7 @@ function InputLogin({
           style={{width : inputWidth}}
           onChange={handleLogin}
           value={value}
+          autoComplete='off'
         />
         <legend>
           <span>{placeholder}</span>

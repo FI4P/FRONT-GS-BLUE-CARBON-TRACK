@@ -3,16 +3,19 @@ import './styles.scss'
 import InputLogin from "../../components/InputLogin"
 import enviroment from "../../assets/svg/enviroment.svg"
 import SubmitButton from "../../components/submitButton"
-import { insertNewUser } from '../../models/User'
+import { insertNewUser, authUser } from '../../models/User'
 import { generateId } from '../../hooks/helper'
+import { toast } from 'react-toastify'
+import PromiseMessage from '../../components/toastContainer'
+import {useNavigate } from 'react-router-dom';
 
 
 
 const Login = ({ hasAccount }) => {
 
     const [signUp, setSingUp] = useState(hasAccount)
-    const [loginInfo, setLoginInfo] = useState({ login: '', password: '' })
-    const [userData, setUserData] = useState({})
+    const [loginInfo, setLoginInfo] = useState({ email: '', password: '' })
+    const navigate = useNavigate()
 
     const handleChangeStatus = () => {
         if (!signUp) {
@@ -21,6 +24,8 @@ const Login = ({ hasAccount }) => {
             setSingUp(false)
         }
     }
+
+    //Manipula o Login
 
     const handleLoginInfos = (e, type) => {
 
@@ -32,39 +37,45 @@ const Login = ({ hasAccount }) => {
 
     }
 
-    useEffect(() => {
-
-    }, [handleLoginInfos])
-
-
-    const handleRegister = async (nodePath, userData) => {
+    const handleRegister = async (userData) => {
         try {
-            const res = await insertNewUser(nodePath, userData)
-            if(res == "success") {
-                setLoginInfo({login : '', password: ''})
+            const res = await insertNewUser(userData)
+            if(res.status == "success") {
+                setLoginInfo({email : '', password: ''});
+                toast.success("Cadastro realizado com sucesso!")
+                setSingUp(!signUp)
+
+            }else{
+                console.log(res.errorMessage)
+                toast.error(res.errorMessage)
             }
         } catch (error) {
             console.log(error)
         }
     }
 
-    const handleNewUser = () => {
-        const userId = generateId()
-        const nodePath = `usuarios/${userId}`
-        const userData = {
-            id: userId,
-            login: loginInfo.login,
-            password: loginInfo.password
+
+    const handleUserAuthentication = async (userData) => {
+        try{
+            const res = await authUser(userData)
+            if(res.status == "success"){
+                setLoginInfo({email : '', password: ''});
+                toast.success("Login efetuado com sucesso, você será redirecionado!")
+                setTimeout(()=> {
+                    navigate("/home")
+                }, 2500 )
+            }else{
+                toast.error(res.errorMessage)
+            }
+        }catch(error){
+            console.log(error)
         }
-
-        handleRegister(nodePath, userData)
-
-
     }
 
     return (
-        <div id='login-page'>
-
+        <>  
+            <PromiseMessage></PromiseMessage>
+            <div id='login-page'>
             <img src={enviroment} alt="Logo" />
 
             <div className="login-infos">
@@ -82,9 +93,9 @@ const Login = ({ hasAccount }) => {
                         inputId="loginInput"
                         inputWidth="100%"
                         handleLogin={(e) => {
-                            handleLoginInfos(e, "login")
+                            handleLoginInfos(e, "email")
                         }}
-                        value={loginInfo.login}
+                        value={loginInfo.email}
 
 
                     />
@@ -107,7 +118,7 @@ const Login = ({ hasAccount }) => {
                                 btnWidth="100%"
                                 background="#2F92FF"
                                 text="Cadastre-se"
-                                onClick={() => { handleNewUser() }}
+                                onClick={() => { handleRegister(loginInfo) }}
 
                             />
 
@@ -123,6 +134,7 @@ const Login = ({ hasAccount }) => {
                                 btnWidth="100%"
                                 background="#2F92FF"
                                 text="Entrar"
+                                onClick={()=> { handleUserAuthentication(loginInfo)}}   
 
                             />
 
@@ -139,6 +151,9 @@ const Login = ({ hasAccount }) => {
 
 
         </div>
+        
+        </>
+        
 
     )
 }
