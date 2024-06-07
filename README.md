@@ -19,6 +19,15 @@ Nosso projeto visa fornecer aos usuários dados precisos sobre as emissões de C
 Este projeto utilizou as seguintes tecnologias e ferramentas:
 * [ReactJS](https://pt-br.legacy.reactjs.org/)
 
+## :hammer_and_wrench: Instalação
+    ```
+      npm install
+      npm i
+
+## :hammer_and_wrench: Rodar o projeto
+    ```
+      npm run dev
+
 ## :technologist: Integrantes
 * RM 553377 - Enzo de Oliveira Rodrigues
 * RM 552939 - Jonata Rafael
