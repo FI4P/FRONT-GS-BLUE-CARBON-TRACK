@@ -1,4 +1,18 @@
 
+div.table-header{
+    display: flex;
+    gap: 2rem;
+
+    span{
+        font-size: 3.2rem;
+        color: #FFF;
+        font-weight: bold;
+      
+    }
+
+    padding: 0 1rem;
+
+}
 section.tableSection{
     border: 1px solid #DCDCDC;
     border-bottom:1px solid #DCDCDC;
@@ -7,11 +21,10 @@ section.tableSection{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     overflow: hidden;
-    max-width: 1000px;
+    width: 1000px;
     overflow-x: auto;
     overflow-y: auto;
     max-height: 50vh;
-    width: 100%;
     margin-top: 20px;
     margin-bottom: 40px;
 
@@ -35,6 +48,7 @@ section.tableSection{
         text-align: left;
         width: 100%;
         border-collapse: collapse; 
+        color: #FFF;
     }
 
     thead{
@@ -46,7 +60,9 @@ section.tableSection{
     th{
         padding: 14px 12px; /* Reduced padding for better fit */
         font-size: 12px;
-        background-color: #F6F6F6;
+        border-bottom:1px solid #DCDCDC;
+        background-color: #206B84;
+
     }
 
     tr{
@@ -54,7 +70,7 @@ section.tableSection{
         transition: all 0.3s ease-in;
         cursor: pointer;
         &:hover {
-            background-color: #F6F6F6;
+            background-color: #f6f6f642;
         }
         &:last-child {
             border-bottom: none;

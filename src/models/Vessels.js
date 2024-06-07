@@ -18,6 +18,25 @@ const getAllVessels = async () => {
 }
 
 
+const getAllVesselsCo2 = async () => {
+     let errorMessage
+    try{
+       const referenceNode = ref(database, "co2Infos")
+       const snapshot = await get(referenceNode)
+       const data = snapshot.val();
+       if(!data){
+        errorMessage = "Não foi possivel localizar as informações"
+        throw new Error(errorMessage)
+       }
+       return {status: "success", data: data, errorMessage : ""}
+    }catch(error){
+        console.log(error)
+    }
+}
+
+
+
 export {
-    getAllVessels
+    getAllVessels,
+    getAllVesselsCo2
 }

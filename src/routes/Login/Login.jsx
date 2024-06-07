@@ -46,7 +46,6 @@ const Login = ({ hasAccount }) => {
                 setSingUp(!signUp)
 
             }else{
-                console.log(res.errorMessage)
                 toast.error(res.errorMessage)
             }
         } catch (error) {

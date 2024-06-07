@@ -1,22 +1,54 @@
 
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import "./styles.scss"
+import "./styles.scss";
+import SearchInput from '../searchInput';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 
-const DataTable = ({ columns, registers }) => {
+
+const DataTable = ({ columns, registers, title = "Embarcações" }) => {
+
+    const [searchValue, setSearchValue] = useState("");
+    const [entries, setEntries] = useState(registers)
+
+    const handleSearchValue = (e) =>{
+        const value = e.target.value;
+        setSearchValue(value)
+    }
+
+    useEffect(() => {
+        if (searchValue === "") {
+            setEntries(registers);
+        } else {
+            const filteredEntries = registers.filter(register => {
+                return columns.some(column => {
+                    return register[column.field]
+                        .toString()
+                        .toLowerCase()
+                        .includes(searchValue.toLowerCase());
+                });
+            });
+            setEntries(filteredEntries);
+        }
+    }, [searchValue, registers, columns]);
+
 
 
 
     return (
-        <>
+        <>  
+            <div>
+            
+            <div className="table-header">
+            
+                <span>{title}</span> 
+                <SearchInput placeholder="Embarcação..." type="text" onChange={(e) => {
+                    handleSearchValue(e)
+                }}/>
+            </div>
             <section className="tableSection">
+                
                 <table>
                     <thead>
                         <tr>
@@ -32,7 +64,7 @@ const DataTable = ({ columns, registers }) => {
                     </thead>
 
                     <tbody>
-                        {registers.map((register, index) => {
+                        {entries.map((register, index) => {
                             return (
                                 <tr key={index}>
                                     {columns.map((column, index) => (<td key={index}>{register[column.field]}</td>))}
@@ -44,6 +76,8 @@ const DataTable = ({ columns, registers }) => {
                 </table>
 
             </section>
+            </div>
+            
 
         </>
     )

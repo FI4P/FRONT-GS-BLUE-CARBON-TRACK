@@ -16,10 +16,19 @@ const Vessels = () => {
             "title": "IMO",
             "field": "imo",
         },
+         {
+            "title": "Embarcação",
+            "field": "name",
+        },
 
         {
-            "title": "Length",
+            "title": "Comprimento",
             "field": "length",
+        },
+
+         {
+            "title": "Largura",
+            "field": "width",
         },
 
         {
@@ -27,20 +36,12 @@ const Vessels = () => {
             "field": "maxDraft",
         },
 
-        {
-            "title": "Name",
-            "field": "name",
-        },
+       
 
-        {
-            "title": "Width",
-            "field": "width",
-        },
+       
 
     ]
     
-    console.log(vessels)
-
     const handleVessels = async () => {
         try{
             
@@ -67,8 +68,10 @@ const Vessels = () => {
         <>
             <section className="vessels">
             <Navbar></Navbar>
-
-            <DataTable columns={columns} registers={vessels}></DataTable>
+            <div className="vessel-info">
+                <DataTable registers={vessels} columns={columns}></DataTable>
+            </div>
+            
 
             </section>
 
